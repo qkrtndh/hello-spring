@@ -68,9 +68,20 @@ class MemberServiceTest {
 
     @Test
     void findMembers() {
+        Member member1 = new Member();
+        member1.setName("soo");
+        Member member2 = new Member();
+        member2.setName("soo2");
+        memberService.join(member1);
+        memberService.join(member2);
+        assertThat(memberService.findMembers().size()).isEqualTo(2);
     }
 
     @Test
     void findOne() {
+        Member member = new Member();
+        member.setName("soo");
+        Long id = memberService.join(member);
+        assertThat(memberService.findOne(id).get()).isEqualTo(member);
     }
 }
