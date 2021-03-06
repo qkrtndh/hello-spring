@@ -67,7 +67,7 @@ class MemberServiceIntegrationTest {
         member2.setName("soo2");
         memberService.join(member1);
         memberService.join(member2);
-        assertThat(memberService.findMembers().size()).isEqualTo(2);
+        assertThat(memberService.findMembers().size()).isEqualTo(4);
     }
 
     @Test
@@ -75,6 +75,6 @@ class MemberServiceIntegrationTest {
         Member member = new Member();
         member.setName("soo");
         Long id = memberService.join(member);
-        assertThat(memberService.findOne(id).get()).isEqualTo(member);
+        assertThat(memberService.findOne(id).get().getName()).isEqualTo(member.getName());
     }
 }
